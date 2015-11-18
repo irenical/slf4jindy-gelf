@@ -1,6 +1,7 @@
 package org.irenical.slf4j;
 
 import org.irenical.jindy.Config;
+import org.irenical.jindy.ConfigContext;
 import org.irenical.jindy.ConfigFactory;
 
 import ch.qos.logback.classic.Logger;
@@ -21,7 +22,7 @@ public class GelfLoggerConfigurator extends LoggerConfigurator implements Config
 
   public GelfLoggerConfigurator() {
   }
-  
+
   @Override
   protected void initListeners() {
     super.initListeners();
@@ -44,12 +45,17 @@ public class GelfLoggerConfigurator extends LoggerConfigurator implements Config
       GelfAppender<ILoggingEvent> gelfAppender = (GelfAppender<ILoggingEvent>) logbackLogger.getAppender(APPENDER_GELF);
 
       if (CONFIG.getBoolean(GELF_ENABLED, false)) {
+        ConfigContext context = ConfigFactory.getContext();
+        String env = context == null ? "n.a." : context.getEnvironment();
+        String stack = context == null ? "n.a." : context.getStack();
+        String datacenter = context == null ? "n.a." : context.getDatacenter();
+        String applicationId = context == null ? "n.a." : context.getApplicationId();
         logbackLogger.detachAppender(gelfAppender);
         gelfAppender = new GelfAppender<>();
         gelfAppender.setHost(CONFIG.getMandatoryString(GELF_HOST));
         gelfAppender.setPort(CONFIG.getMandatoryInt(GELF_PORT));
         gelfAppender.setCompressedChunking(true);
-        gelfAppender.setDefaultFields("{\"environment\": \"" + CONFIG.getString("environment") + "\", \"cluster\": \"" + CONFIG.getString("cluster") + "\", \"facility\": \"" + CONFIG.getString("facility") + "\", \"application\": \"" + CONFIG.getString("application") + "\"}");
+        gelfAppender.setDefaultFields("{\"environment\": \"" + env + "\", \"cluster\": \"" + stack + "\", \"facility\": \"" + datacenter + "\", \"application\": \"" + applicationId + "\"}");
         gelfAppender.setAdditionalFields("{\"level\": \"level\", \"logger\": \"loggerName\", \"thread_name\": \"threadName\", \"exception\": \"exception\", \"time_stamp\": \"timestampMs\"}");
         gelfAppender.setName(APPENDER_GELF);
         gelfAppender.setContext(loggerContext);
@@ -62,5 +68,5 @@ public class GelfLoggerConfigurator extends LoggerConfigurator implements Config
       e.printStackTrace();
     }
   }
-  
+
 }
