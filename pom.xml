@@ -20,7 +20,7 @@
   <properties>
     <slf4j.version>1.7.12</slf4j.version>
     <jindy.version>1.1.5</jindy.version>
-    <slf4jindy.version>1.1.5</slf4jindy.version>
+    <slf4jindy.version>1.1.6</slf4jindy.version>
     <gelf4j.version>1.9</gelf4j.version>
   </properties>
 
