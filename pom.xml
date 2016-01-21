@@ -10,7 +10,7 @@
 
   <groupId>org.irenical.slf4j</groupId>
   <artifactId>slf4jindy-gelf</artifactId>
-  <version>1.1.7-SNAPSHOT</version>
+  <version>1.2.1-SNAPSHOT</version>
 
   <name>SLF4Jindy plus Gelf</name>
   <description>SLF4J Binding</description>
@@ -18,9 +18,9 @@
   <packaging>jar</packaging>
 
   <properties>
-    <slf4j.version>1.7.12</slf4j.version>
-    <jindy.version>1.1.5</jindy.version>
-    <slf4jindy.version>1.1.6</slf4jindy.version>
+    <slf4j.version>1.7.13</slf4j.version>
+    <jindy.version>1.2.0</jindy.version>
+    <slf4jindy.version>1.2.0</slf4jindy.version>
     <gelf4j.version>1.9</gelf4j.version>
   </properties>
 
