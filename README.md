@@ -5,7 +5,7 @@
 Extending [SLF4Jindy](https://github.com/irenical/slf4jindy), adding a Gelf logger.
 
 ### Usage
-Remove slf4jindy dependency in your project and use the following instead
+Remove slf4jindy dependency from your project and use the following instead
 
 ```xml
 <dependency>
