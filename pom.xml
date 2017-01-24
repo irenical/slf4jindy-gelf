@@ -18,9 +18,9 @@
   <packaging>jar</packaging>
 
   <properties>
-    <slf4j.version>1.7.18</slf4j.version>
+    <slf4j.version>1.7.21</slf4j.version>
     <jindy.version>2.1.0</jindy.version>
-    <slf4jindy.version>1.3.0</slf4jindy.version>
+    <slf4jindy.version>1.3.1</slf4jindy.version>
     <gelf4j.version>1.10</gelf4j.version>
   </properties>
 
